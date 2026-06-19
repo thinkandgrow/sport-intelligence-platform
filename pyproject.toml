@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sport-intelligence-platform"
+version = "0.1.0"
+description = "A long-term research and analytics platform for discovering insights from sports data."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas",
+    "matplotlib",
+    "seaborn",
+    "pytest",
+    "ruff"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"

@@ -1,0 +1,17 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# VS Code local settings
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated data artifacts
+data/processed/
+data/artifacts/
