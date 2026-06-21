@@ -15,3 +15,5 @@ venv/
 # Generated data artifacts
 data/processed/
 data/artifacts/
+
+*.egg-info/
