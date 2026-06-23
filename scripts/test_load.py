@@ -4,6 +4,10 @@ from sip.domains.running.analysis import (
     count_runners_by_country,
     count_runners_by_gender,
     filter_unknown_gender,
+    mean_net_time,
+    median_net_time,
+    fastest_runner,
+    slowest_runner
 )
 from sip.domains.running.cleaning import load_results
 
@@ -37,3 +41,18 @@ print(count_runners_by_gender(df))
 
 print("\n=== UNKNOWN GENDER ===")
 print(filter_unknown_gender(df))
+
+print("\n=== MEAN NET TIME ===")
+print(mean_net_time(df))
+
+print("\n=== MEDIAN NET TIME ===")
+print(median_net_time(df))
+
+print("\n=== FASTEST RUNNER ===")
+print(fastest_runner(df))
+
+print("\n=== SLOWEST RUNNER ===")
+print(slowest_runner(df))
+
+
+

@@ -14,8 +14,13 @@ def load_results(file_path: str | Path) -> pd.DataFrame:
     """
     Load race results from a CSV file.
     """
-    return pd.read_csv(
+    df = pd.read_csv(
         file_path,
         sep=";",
         encoding="cp1250",
     )
+
+    df["Czas netto"] = pd.to_timedelta(df["Czas netto"])
+
+    return df
+

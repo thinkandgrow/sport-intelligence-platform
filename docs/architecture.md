@@ -1,61 +1,95 @@
 # Sport Intelligence Platform (SIP)
 
-## Vision
+## Architecture Principles
 
-Sport Intelligence Platform (SIP) is a long-term research platform for sports analytics.
+### Vision
 
-The goal is not only to analyze data but to build reusable tools that transform raw sports data into reliable knowledge.
+Sport Intelligence Platform is not a collection of scripts.
+
+It is an analytics engine that answers questions about sports data.
+
+The long-term goal is to allow users to ask questions in natural language while the platform translates them into analytical operations.
 
 ---
 
-## Core Principles
+## Architecture Layers
 
-### 1. Domain-first architecture
+```
+User
+    │
+    ▼
+Natural Language
+    │
+    ▼
+Question Interpreter
+    │
+    ▼
+Analysis API
+    │
+    ▼
+Pandas Engine
+    │
+    ▼
+Race Data
+```
 
-Code is organized by sports domains.
+---
+
+## Responsibilities
+
+### Race Data
+
+Stores raw race results.
+
+### Pandas Engine
+
+Provides efficient dataframe operations.
+
+### Analysis API
+
+Contains reusable domain-specific analytical functions.
 
 Examples:
 
-- Running
-- Football
-- Baseball
+* mean_net_time()
+* median_net_time()
+* fastest_runner()
+* slowest_runner()
+
+The Analysis API is the only layer allowed to interact directly with Pandas.
+
+### Question Interpreter
+
+Translates user questions into calls to the Analysis API.
+
+Example:
+
+Question:
+
+> What was the average net time?
+
+↓
+
+Function:
+
+mean_net_time(df)
 
 ---
 
-### 2. One function, one responsibility
+## Design Principles
 
-Every function should answer one research question.
-
----
-
-### 3. Reusable production code
-
-Reusable code belongs in `src/`.
-
----
-
-### 4. Exploration belongs in notebooks
-
-Experiments, visualizations and prototypes belong in `notebooks/`.
+* Keep functions pure.
+* Keep functions small.
+* Prefer readability over cleverness.
+* Do not duplicate logic.
+* Use English names.
+* Separate analysis from presentation.
+* Every function should answer one analytical question.
 
 ---
 
-### 5. Thin scripts
+## Long-Term Goal
 
-Scripts orchestrate work.
+Chat Your Race should never execute raw Pandas operations directly.
 
-Business logic belongs inside the library.
-
----
-
-### 6. Raw data is immutable
-
-Raw datasets are never modified.
-
-Processed datasets are stored separately.
-
----
-
-### 7. Continuous improvement
-
-The platform evolves through small, well-tested improvements following the Kaizen philosophy.
+Every user question should be translated into a reusable function from the Analysis API.
