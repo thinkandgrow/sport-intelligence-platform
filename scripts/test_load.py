@@ -27,6 +27,9 @@ from sip.domains.running.analysis import (
     runner_split_20k,
 )
 
+
+from sip.domains.running.mappers import get_runner
+
 from sip.domains.running.cleaning import load_results
 
 DATA_FILE = Path("data/raw/warsaw_half_marathon_2026.csv")
@@ -126,3 +129,10 @@ print(runner_split_15k(df, "M5"))
 
 print("\n=== RUNNER 20K SPLIT ===")
 print(runner_split_20k(df, "M5"))
+
+runner_model = get_runner(df, "M5")
+print("\n=== RUNNER MODEL ===")
+print(runner_model)
+
+
+
