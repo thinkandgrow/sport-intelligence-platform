@@ -1,5 +1,16 @@
 import pandas as pd
 
+# ============================================================
+# Race Statistics
+# Functions that describe the entire race.
+# ============================================================
+
+def count_runners(df: pd.DataFrame) -> int:
+    """
+    Return the total number of runners.
+    """
+    return len(df)
+
 
 def count_runners_by_country(df: pd.DataFrame) -> pd.Series:
     """
@@ -43,12 +54,11 @@ def slowest_runner(df: pd.DataFrame) -> pd.Series:
     """
     return df.loc[df["Czas netto"].idxmax()]
 
-def count_runners(df: pd.DataFrame) -> int:
-    """
-    Return the total number of runners.
-    """
-    return len(df)
 
+# ============================================================
+# Runner
+# Base functions for accessing a single runner.
+# ============================================================
 
 def runner(df: pd.DataFrame, bib_number: str) -> pd.Series:
     """
@@ -56,28 +66,16 @@ def runner(df: pd.DataFrame, bib_number: str) -> pd.Series:
     """
     return df.loc[df["Numer"] == bib_number].iloc[0]
 
-def runner_net_time(df: pd.DataFrame, bib_number: str) -> pd.Timedelta:
-    """
-    Return the runner's net finish time.
-    """
-    return runner(df, bib_number)["Czas netto"]
+# ============================================================
+# Runner Identity
+# Functions describing runner identity.
+# ============================================================
 
-def runner_gun_time(df: pd.DataFrame, bib_number: str) -> str:
+def runner_bib_number(df: pd.DataFrame, bib_number: str) -> str:
     """
-    Return the runner's gun finish time.
+    Return the runner's bib number.
     """
-    return runner(df, bib_number)["Czas brutto"]
-
-def runner_average_pace(df: pd.DataFrame, bib_number: str) -> pd.Timedelta:
-    """
-    Return the runner's average pace per kilometer.
-    """
-
-    net_time = runner_net_time(df, bib_number)
-
-    pace = net_time / 21.0975
-
-    return pace
+    return runner(df, bib_number)["Numer"]
 
 def runner_name(df: pd.DataFrame, bib_number: str) -> str:
     """
@@ -103,9 +101,68 @@ def runner_team(df: pd.DataFrame, bib_number: str) -> str:
     """
     return runner(df, bib_number)["Team"]
 
-def runner_bib_number(df: pd.DataFrame, bib_number: str) -> str:
+
+
+# ============================================================
+# Runner Performance
+#Functions describing runner performance.
+# ============================================================
+
+
+def runner_net_time(df: pd.DataFrame, bib_number: str) -> pd.Timedelta:
     """
-    Return the runner's bib number.
+    Return the runner's net finish time.
     """
-    return runner(df, bib_number)["Numer"]
+    return runner(df, bib_number)["Czas netto"]
+
+def runner_gun_time(df: pd.DataFrame, bib_number: str) -> str:
+    """
+    Return the runner's gun finish time.
+    """
+    return runner(df, bib_number)["Czas brutto"]
+
+def runner_average_pace(df: pd.DataFrame, bib_number: str) -> pd.Timedelta:
+    """
+    Return the runner's average pace per kilometer.
+    """
+
+    net_time = runner_net_time(df, bib_number)
+
+    pace = net_time / 21.0975
+
+    return pace
+
+# ============================================================
+# Runner Ranking
+# ============================================================
+
+
+def runner_overall_place(df: pd.DataFrame, bib_number: str) -> int:
+    """
+    Return the runner's overall finishing place.
+    """
+    return runner(df, bib_number)["#"]
+
+def runner_gender_place(df: pd.DataFrame, bib_number: str) -> int:
+    """
+    Return the runner's place in the gender ranking.
+    """
+    return runner(df, bib_number)["Miejsce płeć"]
+
+def runner_category(df: pd.DataFrame, bib_number: str) -> str:
+    """
+    Return the runner's age category.
+    """
+    return runner(df, bib_number)["Kategoria"]
+
+
+
+
+# ============================================================
+# Runner Splits
+# ============================================================
+
+
+
+
 

@@ -18,6 +18,9 @@ from sip.domains.running.analysis import (
     runner_bib_number,
     runner_gun_time,
     runner_average_pace,
+    runner_overall_place,
+    runner_gender_place,
+    runner_category,
 )
 
 from sip.domains.running.cleaning import load_results
@@ -98,3 +101,12 @@ print(runner_gun_time(df, "M5"))
 
 print("\n=== RUNNER AVERAGE PACE ===")
 print(runner_average_pace(df, "M5"))
+
+print("\n=== RUNNER OVERALL PLACE ===")
+print(runner_overall_place(df, "M5"))
+
+print("\n=== RUNNER GENDER PLACE ===")
+print(runner_gender_place(df, "M5"))
+
+print("\n=== RUNNER CATEGORY ===")
+print(runner_category(df, "M5"))
