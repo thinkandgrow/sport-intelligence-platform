@@ -21,6 +21,10 @@ from sip.domains.running.analysis import (
     runner_overall_place,
     runner_gender_place,
     runner_category,
+    runner_split_5k,
+    runner_split_10k,
+    runner_split_15k,
+    runner_split_20k,
 )
 
 from sip.domains.running.cleaning import load_results
@@ -110,3 +114,15 @@ print(runner_gender_place(df, "M5"))
 
 print("\n=== RUNNER CATEGORY ===")
 print(runner_category(df, "M5"))
+
+print("\n=== RUNNER 5K SPLIT ===")
+print(runner_split_5k(df, "M5"))
+
+print("\n=== RUNNER 10K SPLIT ===")
+print(runner_split_10k(df, "M5"))
+
+print("\n=== RUNNER 15K SPLIT ===")
+print(runner_split_15k(df, "M5"))
+
+print("\n=== RUNNER 20K SPLIT ===")
+print(runner_split_20k(df, "M5"))

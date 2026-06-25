@@ -101,13 +101,10 @@ def runner_team(df: pd.DataFrame, bib_number: str) -> str:
     """
     return runner(df, bib_number)["Team"]
 
-
-
 # ============================================================
 # Runner Performance
 #Functions describing runner performance.
 # ============================================================
-
 
 def runner_net_time(df: pd.DataFrame, bib_number: str) -> pd.Timedelta:
     """
@@ -136,7 +133,6 @@ def runner_average_pace(df: pd.DataFrame, bib_number: str) -> pd.Timedelta:
 # Runner Ranking
 # ============================================================
 
-
 def runner_overall_place(df: pd.DataFrame, bib_number: str) -> int:
     """
     Return the runner's overall finishing place.
@@ -155,14 +151,34 @@ def runner_category(df: pd.DataFrame, bib_number: str) -> str:
     """
     return runner(df, bib_number)["Kategoria"]
 
-
-
-
 # ============================================================
 # Runner Splits
 # ============================================================
+def runner_split_5k(df: pd.DataFrame, bib_number: str) -> str:
+    """
+    Return the runner's 5K split.
+    """
+    return runner(df, bib_number)["5KM"]
+
+def runner_split_10k(df: pd.DataFrame, bib_number: str) -> str:
+    """
+    Return the runner's 10K split.
+    """
+    return runner(df, bib_number)["10KM"]
 
 
+def runner_split_15k(df: pd.DataFrame, bib_number: str) -> str:
+    """
+    Return the runner's 15K split.
+    """
+    return runner(df, bib_number)["15KM"]
+
+
+def runner_split_20k(df: pd.DataFrame, bib_number: str) -> str:
+    """
+    Return the runner's 20K split.
+    """
+    return runner(df, bib_number)["20KM"]
 
 
 
