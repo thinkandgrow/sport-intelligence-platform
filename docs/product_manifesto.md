@@ -1,3 +1,5 @@
+The API is designed around user questions, not around database tables or implementation details.
+
 # Chat Your Race Product Manifesto
 
 > Every result has a story. Chat it.
@@ -43,3 +45,15 @@
 ## Final Thought
 
 (To be written)
+
+## Planned Functions
+
+- runner()
+- runner_name()
+- runner_net_time()
+- runner_gun_time()
+- runner_pace()
+- runner_overall_place()
+- runner_gender_place()
+- runner_age_place()
+- runner_country()

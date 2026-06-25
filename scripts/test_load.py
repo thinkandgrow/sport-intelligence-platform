@@ -1,14 +1,25 @@
 from pathlib import Path
 
 from sip.domains.running.analysis import (
+    count_runners,
     count_runners_by_country,
     count_runners_by_gender,
     filter_unknown_gender,
     mean_net_time,
     median_net_time,
     fastest_runner,
-    slowest_runner
+    slowest_runner,
+    runner,
+    runner_net_time,
+    runner_name,
+    runner_city,
+    runner_country,
+    runner_team,
+    runner_bib_number,
+    runner_gun_time,
+    runner_average_pace,
 )
+
 from sip.domains.running.cleaning import load_results
 
 DATA_FILE = Path("data/raw/warsaw_half_marathon_2026.csv")
@@ -54,5 +65,36 @@ print(fastest_runner(df))
 print("\n=== SLOWEST RUNNER ===")
 print(slowest_runner(df))
 
+print("\n=== TOTAL RUNNERS ===")
+print(count_runners(df))
+
+print("\n=== FIRST RUNNERS ===")
+print(df[["Numer", "Imię i nazwisko"]].head(10))
+
+print("\n=== RUNNER TEST ===")
+print(runner(df, "M5"))
+
+print("\n=== RUNNER NET TIME ===")
+print(runner_net_time(df, "M5"))
 
 
+print("\n=== RUNNER NAME ===")
+print(runner_name(df, "M5"))
+
+print("\n=== RUNNER CITY ===")
+print(runner_city(df, "M5"))
+
+print("\n=== RUNNER COUNTRY ===")
+print(runner_country(df, "M5"))
+
+print("\n=== RUNNER TEAM ===")
+print(runner_team(df, "M5"))
+
+print("\n=== RUNNER BIB NUMBER ===")
+print(runner_bib_number(df, "M5"))
+
+print("\n=== RUNNER GUN TIME ===")
+print(runner_gun_time(df, "M5"))
+
+print("\n=== RUNNER AVERAGE PACE ===")
+print(runner_average_pace(df, "M5"))
