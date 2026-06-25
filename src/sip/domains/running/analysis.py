@@ -1,5 +1,6 @@
 import pandas as pd
 
+from sip.domains.running.constants import HALF_MARATHON_DISTANCE_KM
 # ============================================================
 # Race Statistics
 # Functions that describe the entire race.
@@ -125,7 +126,7 @@ def runner_average_pace(df: pd.DataFrame, bib_number: str) -> pd.Timedelta:
 
     net_time = runner_net_time(df, bib_number)
 
-    pace = net_time / 21.0975
+    pace = net_time / HALF_MARATHON_DISTANCE_KM
 
     return pace
 
