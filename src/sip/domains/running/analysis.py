@@ -55,6 +55,37 @@ def slowest_runner(df: pd.DataFrame) -> pd.Series:
     """
     return df.loc[df["Czas netto"].idxmax()]
 
+# ============================================================
+# Race API
+# ============================================================
+
+def winner(df: pd.DataFrame) -> pd.Series:
+    """
+    Return the overall race winner.
+    """
+    return df.loc[df["Czas netto"].idxmin()]
+
+def fastest_man(df: pd.DataFrame) -> pd.Series:
+    """
+    Return the fastest male runner.
+    """
+    men = df[df["Płeć"] == "M"]
+    return men.loc[men["Czas netto"].idxmin()]
+
+def fastest_woman(df: pd.DataFrame) -> pd.Series:
+    """
+    Return the fastest female runner.
+    """
+    women = df[df["Płeć"] == "K"]
+    return women.loc[women["Czas netto"].idxmin()]
+
+def count_countries(df: pd.DataFrame) -> int:
+    """
+    Return the number of represented countries.
+    """
+    return df["Kraj"].nunique()
+
+
 
 # ============================================================
 # Runner
@@ -181,5 +212,41 @@ def runner_split_20k(df: pd.DataFrame, bib_number: str) -> str:
     """
     return runner(df, bib_number)["20KM"]
 
+def represented_countries(df: pd.DataFrame) -> list[str]:
+    """
+    Return a sorted list of represented countries.
+    """
+    return sorted(df["Kraj"].unique())
+
+def most_represented_country(df: pd.DataFrame) -> str:
+    """
+    Return the country with the most runners.
+    """
+    return df["Kraj"].value_counts().idxmax()
+
+def finishers(df: pd.DataFrame) -> int:
+    """
+    Return the number of finishers.
+    """
+    return len(df)
+
+def did_not_finish(df: pd.DataFrame) -> int:
+    """
+    Return the number of runners who did not finish.
+    """
+    return 0
 
 
+
+
+def finishers(df: pd.DataFrame) -> int:
+    """
+    Return the number of finishers.
+    """
+    return len(df)
+
+def did_not_finish(df: pd.DataFrame) -> int:
+    """
+    Return the number of runners who did not finish.
+    """
+    return 0

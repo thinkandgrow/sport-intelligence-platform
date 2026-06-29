@@ -196,6 +196,25 @@ The project follows a documented architecture and AI-assisted development workfl
 
 Every contribution should preserve the existing architecture and keep the Analysis API consistent.
 
+# SIP Knowledge Base
+
+Each document is not a book summary.
+
+Each document explains how the knowledge can be applied to the Sport Intelligence Platform.
+
+Every document should contain:
+
+- Executive Summary
+- Core Principles
+- Key Concepts
+- Mental Models
+- Metrics
+- Possible Domain Models
+- Possible APIs
+- Possible Insights
+- Product Ideas
+- Connections with other knowledge
+
 ---
 
 # Author

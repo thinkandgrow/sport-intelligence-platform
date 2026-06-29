@@ -25,16 +25,33 @@ from sip.domains.running.analysis import (
     runner_split_10k,
     runner_split_15k,
     runner_split_20k,
+    winner,
+    fastest_man,
+    fastest_woman,
+    count_countries,
+    represented_countries,
+    most_represented_country,
+    finishers,
+    did_not_finish,
 )
-
-
+from sip.domains.running.cleaning import load_results
 from sip.domains.running.mappers import get_runner
 
-from sip.domains.running.cleaning import load_results
+# ============================================================
+# Configuration
+# ============================================================
 
 DATA_FILE = Path("data/raw/warsaw_half_marathon_2026.csv")
 
+# ============================================================
+# Load Data
+# ============================================================
+
 df = load_results(DATA_FILE)
+
+# ============================================================
+# Data Loading
+# ============================================================
 
 print("\n=== FIRST 5 ROWS ===")
 print(df.head())
@@ -53,6 +70,10 @@ print(df.isna().sum())
 
 print("\n=== DATA TYPES ===")
 print(df.dtypes)
+
+# ============================================================
+# Race Statistics
+# ============================================================
 
 print("\n=== RUNNERS BY COUNTRY ===")
 print(count_runners_by_country(df))
@@ -81,12 +102,15 @@ print(count_runners(df))
 print("\n=== FIRST RUNNERS ===")
 print(df[["Numer", "Imię i nazwisko"]].head(10))
 
+# ============================================================
+# Runner API
+# ============================================================
+
 print("\n=== RUNNER TEST ===")
 print(runner(df, "M5"))
 
 print("\n=== RUNNER NET TIME ===")
 print(runner_net_time(df, "M5"))
-
 
 print("\n=== RUNNER NAME ===")
 print(runner_name(df, "M5"))
@@ -130,9 +154,45 @@ print(runner_split_15k(df, "M5"))
 print("\n=== RUNNER 20K SPLIT ===")
 print(runner_split_20k(df, "M5"))
 
+# ============================================================
+# Runner Model
+# ============================================================
+
 runner_model = get_runner(df, "M5")
+
 print("\n=== RUNNER MODEL ===")
 print(runner_model)
 
+# ============================================================
+# Race API
+# ============================================================
 
+print("\n=== WINNER ===")
+print(winner(df))
 
+print("\n=== FASTEST MAN ===")
+print(fastest_man(df))
+
+print("\n=== FASTEST WOMAN ===")
+print(fastest_woman(df))
+
+print("\n=== NUMBER OF COUNTRIES ===")
+print(count_countries(df))
+
+print("\n=== REPRESENTED COUNTRIES ===")
+print(represented_countries(df))
+
+print("\n=== MOST REPRESENTED COUNTRY ===")
+print(most_represented_country(df))
+
+print("\n=== FINISHERS ===")
+print(finishers(df))
+
+print("\n=== DID NOT FINISH ===")
+print(did_not_finish(df))
+
+print("\n=== FINISHERS ===")
+print(finishers(df))
+
+print("\n=== DID NOT FINISH ===")
+print(did_not_finish(df))
